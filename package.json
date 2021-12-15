@@ -1,0 +1,23 @@
+{
+  "name": "curso-cypress",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "cy:open": "cypress open"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WilliamBSilva/curso-cypress.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/WilliamBSilva/curso-cypress/issues"
+  },
+  "homepage": "https://github.com/WilliamBSilva/curso-cypress#readme",
+  "devDependencies": {
+    "cypress": "^4.12.1"
+  }
+}
