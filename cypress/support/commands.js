@@ -41,5 +41,32 @@ Cypress.Commands.add("createOng", () => {
 
         Cypress.env('createdOngId', response.body.id);
     });
-
 })
+
+Cypress.Commands.add("createNewIncident", () => {
+    cy.request({
+        method: 'POST',
+        url: 'https://betheheroapi4.herokuapp.com/incidents',
+        headers: {'Authorization': `${Cypress.env('createdOngId')}`,},
+        body: {
+            title: "Animal abandonado", 
+            description: "Animal precisa de apoio para ter onde morar", 
+            value: "500"}
+    }).then(response => {
+        expect(response.body.id).is.not.null;
+        cy.log(response.body.id);
+
+        Cypress.env('createdIncidentId', response.body.id);
+    });
+})
+
+Cypress.Commands.add("login", () => {
+    cy.visit('http://localhost:3000/profile', {
+        onBeforeLoad: (browser) => {
+          browser.localStorage.setItem('ongId', Cypress.env('createdOngId'))
+          browser.localStorage.setItem('ongName', 'Gatos Danados')
+        }
+      })
+    cy.wait(2000)  
+})
+
